@@ -79,21 +79,21 @@ class Library:
 #******************************************#
 #INITIALIZE BOOKS
 #******************************************#
-a = Book("Harry Potter and the Sorcerer's Stone",
-        "J.K. Rowling",
-        1998,)
-b = Book("The Hunger Games",
-        "Suzanne Collins",
-        2005,)
-c = Book("Ramona Quimby",
-        "Judy Blume",
-        1990,)
+a = Book("Wide Sargasso Sea",
+        "Jean Rhys",
+        1966,)
+b = Book("The Wall",
+        "Marlen Haushofer",
+        1963,)
+c = Book("Moby Dick",
+        "Herman Melville",
+        1851,)
 d = Book("The Handmaid's Tale",
         "Margaret Atwood",
-        1970,)
+        1985,)
 e = Book("The Giver",
         "Lois Lowry",
-        1999,)
+        1993,)
 
 #***********************************
 # Integer validation function:
