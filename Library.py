@@ -23,7 +23,12 @@ class Book:
             self.out = False
 
 #******************************************#
-#DEFINE NODE CLASS
+# DEFINE NODE CLASS
+# nodes contain books, and point to
+# adjacent nodes. The list structure is
+# circular, with a single sentinel
+# (a node with None data) marking both
+# beginning and end
 #******************************************#
 class Node:
     def __init__(self, p, n, book):
@@ -32,7 +37,9 @@ class Node:
             self.data = book
 
 #******************************************#
-#DEFINE LIBRARY (container) CLASS
+# DEFINE LIBRARY (container) CLASS
+# library holds a circularly doubly
+# linked list of nodes
 #******************************************#
 class Library:
         
@@ -62,7 +69,6 @@ class Library:
             print "Book not found in library\n"
 
     def printLibrary(self):
-            print "\n"
             print "  \tPrinting Library\n"
             printNode = self.sentinel
             #iterate through all existing books
@@ -94,6 +100,9 @@ d = Book("The Handmaid's Tale",
 e = Book("The Giver",
         "Lois Lowry",
         1993,)
+f = Book("Slaughterhouse Five",
+        "Kurt Vonnegut",
+        1969,)
 
 #***********************************
 # Integer validation function:
@@ -142,7 +151,7 @@ def testLibrary():
         #INITIALIZE LIBRARY
         #******************************************#
         newLibrary = Library()
-        #print "Library Created"
+        print "Library Created\n"
 
         #******************************************#
         #ADD BOOKS
@@ -152,7 +161,7 @@ def testLibrary():
         newLibrary.addNode(c)
         newLibrary.addNode(d)
         newLibrary.addNode(e)
-        #print "books added"
+        print "5 books added\n"
 
         #******************************************#
         #PRINT BOOKS
@@ -163,8 +172,9 @@ def testLibrary():
         #ADD BOOKS
         #******************************************#
         newLibrary.removeNode(a)
+        print "book 1 removed\n"
         newLibrary.removeNode(c)
-        print "books removed"
+        print "book 3 removed\n"
 
         #******************************************#
         #PRINT BOOKS
@@ -174,9 +184,10 @@ def testLibrary():
         #******************************************#
         #ADD BOOKS
         #******************************************#
-        newLibrary.addNode(a)
+        newLibrary.addNode(f)
+        print "new book added\n"
         newLibrary.addNode(c)
-        print "books added"
+        print "old book 3 re-added\n"
 
         #******************************************#
         #PRINT BOOKS
@@ -217,7 +228,7 @@ def intLibrary():
 
                 if choices == 2:
                     print "\nWhat is the title of the book you would like to remove?"
-                    srcTitle = raw_input("Input the book title:")
+                    srcTitle = raw_input("Input the book title:  ")
                 
                     searchNode = interactiveLibrary.sentinel
                     found = False
@@ -248,7 +259,9 @@ keepGoing = 2
 
 while (keepGoing == 2):
 
-    print "*** Linked List Library Program ***\t"
+    print "\t***********************************"
+    print "\t*** Linked List Library Program ***"
+    print "\t***********************************"
 
     print " 1.\t Run automated test"
     print " 2.\t Run interactive test"
@@ -263,14 +276,19 @@ while (keepGoing == 2):
     #AUTOMATED TEST
     #******************************************#
     if choice == 1:
-        print "*** AUTOMATED TEST ***\n"
+        print "\t***********************************"
+        print "\t***       AUTOMATED TEST        ***"
+        print "\t***********************************"
+
         testLibrary()
 
     #******************************************#
     #INTERACTIVE TEST
     #******************************************#
     if choice == 2:
-        print "*** INTERACTIVE TEST ***"
+        print "\t***********************************"
+        print "\t***      INTERACTIVE TEST       ***"
+        print "\t***********************************"
         intLibrary()
 
 
@@ -278,15 +296,13 @@ while (keepGoing == 2):
     # ASK USER WHETHER TO CONTINUE
     #-----------------------------
     if choice == 3:
-        print "Are you sure you want to quit?"
-        print "1. \tYes"
-        print "2. \tNo\n"
-        print "Input your selection, then press ENTER:\n"
+        print " Are you sure you want to quit?"
+        print " 1. \tYes"
+        print " 2. \tNo\n"
+        print " Input your selection, then press ENTER:\n"
         keepGoing = validate_ints(keepGoing);
 
-print "Thanks for testing the Linked List Library!"
-print "\n"
-
+print " Thanks for testing the Linked List Library!\n"
 
 
 
