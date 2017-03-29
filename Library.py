@@ -55,11 +55,11 @@ class Library:
                     searchNode.prev.next = searchNode.next
                     searchNode.next.prev = searchNode.prev
                     self.numNodes = self.numNodes - 1
-                    "Book removed from library"
+                    "Book removed from library\n"
                     return
                 else:
                     searchNode = searchNode.next
-            print "Book not found in library"
+            print "Book not found in library\n"
 
     def printLibrary(self):
             print "\n"
@@ -96,7 +96,7 @@ e = Book("The Giver",
         1999,)
 
 #***********************************
-# Input validation function:
+# Integer validation function:
 # Loops for more input if user-
 # supplied values are invalid.
 #***********************************
@@ -115,6 +115,28 @@ def validate_ints(number):
             print "Invalid Input. Please try again:\n"
             continue
 
+#***********************************
+# String validation function:
+# Loops for more input if user-
+# supplied values are invalid.
+#***********************************
+def validate_strs(string):
+    while True:
+        string = input()
+        try:
+            string = str(string)
+        except ValueError:
+            print "Invalid Input. Please try again:\n"
+            continue
+        if (string):
+            return string
+        else:
+            print "Invalid Input. Please try again:\n"
+            continue
+
+#******************************************#
+#AUTOMATED TEST
+#******************************************#
 def testLibrary():
         #******************************************#
         #INITIALIZE LIBRARY
@@ -161,6 +183,62 @@ def testLibrary():
         #******************************************#
         newLibrary.printLibrary()
 
+#******************************************#
+#INTERACTIVE TEST
+#******************************************#
+def intLibrary():
+        #******************************************#
+        #INITIALIZE LIBRARY
+        #******************************************#
+        interactiveLibrary = Library()
+        #print "Library Created"
+
+        #******************************************#
+        #ADD BOOKS
+        #******************************************#
+        runTest = True
+        while runTest == True:
+
+                print " 1.\t Add a book to the library"
+                print " 2.\t Remove a book from the library"
+                print " 3.\t Print the library"
+                print " 4.\t Quit to Main Menu"
+
+                choices = 0
+                choices = validate_ints(choices)
+
+                if choices == 1:
+                    author = raw_input("Input the author name:  ")
+                    title = raw_input("Input the book title:  ")
+                    pubDate = raw_input("Input the publication year (e.g. 1776):  ")
+                    newBook = Book(title, author, pubDate)
+                    interactiveLibrary.addNode(newBook)
+                    print "\nbook added"
+
+                if choices == 2:
+                    print "\nWhat is the title of the book you would like to remove?"
+                    srcTitle = raw_input("Input the book title:")
+                
+                    searchNode = interactiveLibrary.sentinel
+                    found = False
+                    for index in range(interactiveLibrary.numNodes):
+                        if searchNode.next.data.title == srcTitle:
+                            searchNode.next = searchNode.next.next
+                            searchNode.next.next.prev = searchNode
+                            interactiveLibrary.numNodes = interactiveLibrary.numNodes - 1
+                            found = True
+                        else:
+                            searchNode = searchNode.next
+                    if found == False:
+                        print "\nNo book with that title found in library\n"
+                    else:
+                        print "\nBook removed from library\n"
+
+                if choices == 3:
+                    interactiveLibrary.printLibrary()
+
+                if choices == 4:
+                     runTest = False
 
 #******************************************#
 #MAIN PROGRAM
@@ -193,7 +271,7 @@ while (keepGoing == 2):
     #******************************************#
     if choice == 2:
         print "*** INTERACTIVE TEST ***"
-        print "\n    Begin interactive test?"
+        intLibrary()
 
 
     #-----------------------------
@@ -206,7 +284,7 @@ while (keepGoing == 2):
         print "Input your selection, then press ENTER:\n"
         keepGoing = validate_ints(keepGoing);
 
-print "Thanks for using Calendar Generator!"
+print "Thanks for testing the Linked List Library!"
 print "\n"
 
 
